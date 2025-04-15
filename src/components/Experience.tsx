@@ -1,41 +1,56 @@
 import { motion } from 'framer-motion';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
-import { Briefcase } from 'lucide-react';
+import { Award, Calendar } from 'lucide-react';
 
-export default function Experience() {
-  const experiences = [
+export default function Certifications() {
+  const certifications = [
     {
-      title: "Food Rescue Hub",
-      role: "UX/UI Design, Full-Stack Developer",
-      description: "Developed a full-stack food waste reduction platform connecting donors with recipients using Next.js and Firebase. Implemented geolocation-based filtering and real-time notifications.",
-      tech: ["Next.js", "TypeScript", "TailwindCSS", "ShadCn", "Yup", "Formik", "Firebase"],
-      figmaLink: "Local Food Rescue Hub"
+      title: "React/Next JS Training",
+      organization: "Gaza Sky Geeks",
+      date: "Dec 2024 - Apr 2025",
+      description: "Learning how to build scalable web applications using React, TypeScript, and Next.js as Full Stack Developer. Exploring advanced front-end techniques, including SSR, ISR, and API integration. Working on projects to apply modern web development concepts.",
+      skills: ["React", "Next.js", "TypeScript", "SSR", "API Integration","CSR","Error Handling"],
     },
     {
-      title: "Invoice Management Tool",
-      role: "Frontend Developer",
-      description: "Developed a modern invoicing tool with React Router for navigation, TypeScript for error-free code, and PDF.js for generating downloadable invoices.",
-      tech: ["React", "TypeScript", "TailwindCSS", "UseReducer", "Context API", "PDF.js"],
-      figmaLink: null
+      title: "React JS Training",
+      organization: "PalSoft Palestine",
+      date: "Oct 2024 - Jan 2025",
+      description: "Completed advanced training in React JS, focusing on tools like React Query, Tailwind CSS, and React Testing. Gained hands-on experience in state management, API integration, and performance optimization. Built interactive and responsive web components using modern React best practices.",
+      skills: ["React", "React Query", "Tailwind CSS", "React Testing", "State Management"]
     },
     {
-      title: "Class2Code Platform",
-      role: "Frontend Developer",
-      description: "Contributed to a web-based platform that simulates corporate workflows for software engineering students. Published research in IEEE and presented at international conferences.",
-      tech: ["React", "Mantine UI", "Apollo Client", "GraphQL"],
-      figmaLink: "class2code (Copy)"
+      title: "Google UI/UX Full Course",
+      organization: "Online",
+      date: "Oct 2023 - Feb 2024",
+      description: "Advanced Figma training covering user research, wireframe, prototyping, and usability testing. Learned user-focused design principles to enhance digital product experiences. Applied design thinking methodologies to create intuitive and accessible interfaces.",
+      skills: ["Figma", "UI/UX Design", "User Research", "Prototyping", "Design Thinking"]
     },
     {
-      title: "Medical-Clinic Platform",
-      role: "Frontend Developer",
-      description: "Built a healthcare management system for scheduling patient appointments with interactive UI components for appointment booking and management.",
-      tech: ["React", "Tailwind CSS", "Material UI"],
-      figmaLink: null
+      title: "JavaScript Training",
+      organization: "Gaza Sky Geeks",
+      date: "Apr 2023 - May 2023",
+      description: "Mastered JavaScript fundamentals, including OOP, API handling, and data structures. Worked on real-world problem-solving challenges to improve logical thinking and coding efficiency. Developed small-scale projects such as a to-do list app and dynamic data handling tasks.",
+      skills: ["JavaScript", "OOP", "API Integration", "Data Structures", "Problem Solving"]
+    },
+    {
+      title: "UI/UX Workshop",
+      organization: "Gaza Sky Geeks",
+      date: "Aug 2022 - Sep 2022",
+      description: "Learned the basics of UI/UX design with a focus on Figma. Gained hands-on experience in prototyping and user interface design. Explored the fundamentals of usability and interaction design.",
+      skills: ["UI/UX Basics", "Figma", "Prototyping", "Interaction Design"]
+    },
+    {
+      title: "React JS Workshop",
+      organization: "Gaza Sky Geeks",
+      date: "Jun 2022 - Jul 2022",
+      description: "Developed a fully functional e-commerce site using React JS. Improved front-end development skills through hands-on projects. Focused on state management, component architecture, and UI/UX best practices.",
+      skills: ["React JS", "E-commerce Development", "State Management", "Component Architecture"]
     }
   ];
 
   return (
-    <section id="experience" className="py-20 bg-muted/30">
+    <section id="certifications" className="py-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,42 +59,45 @@ export default function Experience() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold inline-block border-b-2 border-primary pb-2">Professional Experience</h2>
+          <h2 className="text-3xl font-bold inline-block border-b-2 border-primary pb-2">Certifications & Training</h2>
         </motion.div>
         
-        <div className="space-y-12">
-          {experiences.map((experience, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {certifications.map((cert, index) => (
             <motion.div
-              key={experience.title}
+              key={cert.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="bg-card rounded-lg p-6 shadow-md"
             >
-              <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-primary">{experience.title}</h3>
-                  <div className="flex items-center text-muted-foreground mt-1">
-                    <Briefcase className="h-4 w-4 mr-2" />
-                    <span>{experience.role}</span>
+              <Card className="h-full flex flex-col overflow-hidden hover:shadow-md transition-shadow duration-300">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="outline" className="flex items-center">
+                      <Award className="h-3 w-3 mr-1" />
+                      {cert.organization}
+                    </Badge>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Calendar className="h-3 w-3 mr-1" />
+                      {cert.date}
+                    </div>
                   </div>
-                </div>
+                  <CardTitle className="text-xl">{cert.title}</CardTitle>
+                </CardHeader>
                 
-                {experience.figmaLink && (
-                  <Badge variant="outline" className="flex items-center">
-                    <span className="mr-1">Figma:</span> {experience.figmaLink}
-                  </Badge>
-                )}
-              </div>
-              
-              <p className="mb-4">{experience.description}</p>
-              
-              <div className="flex flex-wrap gap-2">
-                {experience.tech.map(tech => (
-                  <Badge key={tech} variant="secondary">{tech}</Badge>
-                ))}
-              </div>
+                <CardContent className="flex-grow">
+                  <p className="text-sm text-muted-foreground mb-4">{cert.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {cert.skills.map((skill) => (
+                      <Badge key={skill} variant="secondary" className="text-xs">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>
