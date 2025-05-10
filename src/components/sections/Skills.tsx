@@ -43,20 +43,30 @@ const Skills: React.FC = () => {
     // Programming Languages
     { name: 'JavaScript', level: 90, category: 'Languages' },
     { name: 'TypeScript', level: 85, category: 'Languages' },
-    { name: 'Python', level: 80, category: 'Languages' },
-    { name: 'HTML/CSS', level: 95, category: 'Languages' },
+    { name: 'Java', level: 80, category: 'Languages' },
+    { name: 'Dart', level: 75, category: 'Languages' },
+    { name: 'SQL/NoSQL', level: 85, category: 'Languages' },
     
-    // Frameworks
-    { name: 'React', level: 92, category: 'Frameworks' },
-    { name: 'Node.js', level: 88, category: 'Frameworks' },
-    { name: 'Express', level: 85, category: 'Frameworks' },
-    { name: 'Next.js', level: 80, category: 'Frameworks' },
+    // Frontend
+    { name: 'React', level: 95, category: 'Frontend' },
+    { name: 'Next.js', level: 90, category: 'Frontend' },
+    { name: 'Flutter', level: 80, category: 'Frontend' },
+    { name: 'Tailwind CSS', level: 95, category: 'Frontend' },
+    { name: 'Material UI', level: 85, category: 'Frontend' },
+    { name: 'Mantine UI', level: 85, category: 'Frontend' },
+    { name: 'ShadCN', level: 90, category: 'Frontend' },
     
-    // Tools & Others
-    { name: 'Git', level: 90, category: 'Tools' },
-    { name: 'Docker', level: 75, category: 'Tools' },
-    { name: 'AWS', level: 70, category: 'Tools' },
-    { name: 'UI/UX Design', level: 85, category: 'Design' }
+    // Backend
+    { name: 'Spring Boot', level: 75, category: 'Backend' },
+    { name: 'Express.js', level: 85, category: 'Backend' },
+    { name: 'REST APIs', level: 90, category: 'Backend' },
+    { name: 'GraphQL', level: 80, category: 'Backend' },
+    
+    // Tools & Design
+    { name: 'Figma', level: 90, category: 'Design' },
+    { name: 'MySQL', level: 80, category: 'Tools' },
+    { name: 'NoSQL', level: 75, category: 'Tools' },
+    { name: 'Git', level: 85, category: 'Tools' }
   ];
 
   const categories = [...new Set(skills.map(skill => skill.category))];
@@ -65,12 +75,12 @@ const Skills: React.FC = () => {
     <section id="skills" className="section-padding bg-secondary/30 py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+          <h2 className="text-3xl font-bold mb-2 flex items-center justify-center gap-2 font-playfair">
             <Star className="h-6 w-6" />
             <span>Skills & Expertise</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of my technical skills and proficiency levels in various technologies and tools.
+            A comprehensive overview of my technical skills and proficiency levels in various technologies.
           </p>
         </div>
         

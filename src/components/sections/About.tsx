@@ -7,30 +7,27 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/h
 const About: React.FC = () => {
   const education = [
     {
-      degree: "Master of Computer Science",
-      institution: "Stanford University",
-      year: "2018 - 2020",
-      description: "Specialized in Machine Learning and Distributed Systems"
-    },
-    {
-      degree: "Bachelor of Science in Software Engineering",
-      institution: "University of California, Berkeley",
-      year: "2014 - 2018",
-      description: "Graduated with honors, GPA 3.8/4.0"
+      degree: "B.S. in Software Engineering",
+      institution: "Bethlehem University",
+      year: "Aug 2020 - Jul 2024",
+      description: "Focus on web and mobile application development"
     }
   ];
 
   const certifications = [
-    "AWS Certified Solutions Architect",
-    "Google Cloud Certified Professional Developer",
-    "Microsoft Certified: Azure Developer Associate"
+    "React JS Training · PalSoft · Palestine (Oct 2024 - Jan 2025)",
+    "Google UI/UX Full Course (Oct 2023 - Feb 2024)",
+    "JavaScript Training · Gaza Sky Geeks (Apr 2023 - May 2023)",
+    "UI/UX Workshop · Gaza Sky Geeks (Aug 2022 - Sep 2022)",
+    "React JS Workshop · Gaza Sky Geeks (Jun 2022 - Jul 2022)",
+    "React/Next JS Training · Gaza Sky Geeks (Dec 2024 - Apr 2025)"
   ];
 
   return (
     <section id="about" className="section-padding gradient-bg-purple">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-[Playfair+Display] font-bold mb-2 flex items-center justify-center gap-2">
+          <h2 className="text-3xl font-playfair font-bold mb-2 flex items-center justify-center gap-2">
             <User className="h-6 w-6" />
             <span>About Me</span>
           </h2>
@@ -54,9 +51,9 @@ const About: React.FC = () => {
           
           {/* Bio Details */}
           <div className="reveal">
-            <h3 className="text-2xl font-[Playfair+Display] font-semibold mb-4">Hi, I'm Osama Ghneem</h3>
+            <h3 className="text-2xl font-playfair font-semibold mb-4">Hi, I'm Osama Ghneem</h3>
             <p className="mb-6 text-lg">
-              A passionate Software Developer & Designer with over 5 years of experience in creating elegant, user-centered digital experiences. I specialize in full-stack development with a focus on modern web technologies and responsive design.
+              Dynamic and innovative Full-Stack Developer with a strong foundation in designing and implementing scalable web and mobile applications. Proven leadership in managing cross-functional teams and delivering high-impact solutions for diverse industries.
             </p>
             
             <div className="space-y-4 mb-8">
@@ -65,7 +62,7 @@ const About: React.FC = () => {
                 <div>
                   <h4 className="font-medium">Professional Background</h4>
                   <p className="text-muted-foreground">
-                    I've worked with startups and established companies to deliver robust software solutions that solve real-world problems. My approach combines technical expertise with creative thinking.
+                    I specialize in full-stack development using React, Next.js, Spring Boot, and Express.js. I have experience leading teams and delivering high-quality solutions for e-commerce, healthcare, and educational platforms.
                   </p>
                 </div>
               </div>
