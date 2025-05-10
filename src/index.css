@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 261 79% 75%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -23,7 +23,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 261 60% 50%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -46,7 +46,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 261 79% 75%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -55,7 +55,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 261 60% 50%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -82,10 +82,12 @@
   }
 }
 
+/* Section Styles */
 .section-padding {
   @apply py-16 md:py-24;
 }
 
+/* Animation Styles */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -97,6 +99,7 @@
   transform: translateY(0);
 }
 
+/* Skill Bar Animation */
 .skill-bar {
   position: relative;
   height: 6px;
@@ -115,6 +118,7 @@
   transition: width 1s ease;
 }
 
+/* Timeline Styles */
 .timeline-item {
   position: relative;
   padding-left: 20px;
@@ -146,4 +150,31 @@
 
 .timeline-item:last-child::after {
   display: none;
+}
+
+/* Card Hover Effects */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Gradient Backgrounds */
+.gradient-bg-purple {
+  background: linear-gradient(135deg, rgba(155, 135, 245, 0.1) 0%, rgba(126, 105, 171, 0.1) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Social Media Icons */
+.social-icon {
+  @apply text-muted-foreground hover:text-primary transition-colors duration-200;
 }
