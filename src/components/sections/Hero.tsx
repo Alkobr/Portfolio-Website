@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { User, Download, Mail, ExternalLink } from 'lucide-react';
-
+import userImage from "../../../public/osamaImage2.png"
 const Hero: React.FC = () => {
   const scrollToContact = () => {
     const contactSection = document.querySelector('#contact');
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
                 About me
               </Button>
               <Button size="lg" variant="secondary" asChild>
-                <a href="/Osama_Ghneem_Resume.pdf" download="Osama_Ghneem_Resume.pdf">
+                <a href="/OsamaGhneem-FullStackDeveloper-CV.pdf" download="Osama_Ghneem_Resume.pdf">
                   <Download className="mr-2 h-4 w-4" />
                   Resume
                 </a>
@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
             <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent mix-blend-overlay"></div>
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" 
+                src={userImage} 
                 alt="Osama Ghneem" 
                 className="w-full h-full object-cover"
               />

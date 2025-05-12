@@ -3,7 +3,7 @@ import React from 'react';
 import { User, Briefcase, GraduationCap, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-
+import userImage from "../../../public/osamaImage2.png"
 const About: React.FC = () => {
   const education = [
     {
@@ -42,7 +42,7 @@ const About: React.FC = () => {
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-accent/20 mix-blend-overlay"></div>
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" 
+                src={userImage}
                 alt="Osama Ghneem" 
                 className="w-full h-full object-cover"
               />
