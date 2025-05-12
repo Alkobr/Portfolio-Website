@@ -31,7 +31,7 @@ const Experience: React.FC = () => {
       period: "2023",
       description: [
         "Contributed to developing a web-based platform that simulates corporate workflows for software engineering students.",
-        "Published research in IEEE: "Enhancing Software Engineering Education through an Authentic Web-Based Simulation of Corporate Workflows."",
+        "Published research in IEEE: \"Enhancing Software Engineering Education through an Authentic Web-Based Simulation of Corporate Workflows.\"",
         "Implemented user-focused designs using Figma and integrated GraphQL APIs.",
         "Presented the project at ITSAF 2024 (IT Students' Works Exhibition) in Jordan at Al-Balqa University."
       ]
