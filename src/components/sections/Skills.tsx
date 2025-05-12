@@ -55,6 +55,9 @@ const Skills: React.FC = () => {
     { name: 'Material UI', level: 85, category: 'Frontend' },
     { name: 'Mantine UI', level: 85, category: 'Frontend' },
     { name: 'ShadCN', level: 90, category: 'Frontend' },
+    { name: 'Bootstrap', level: 85, category: 'Frontend' },
+    { name: 'Formik', level: 80, category: 'Frontend' },
+    { name: 'Yup', level: 80, category: 'Frontend' },
     
     // Backend
     { name: 'Spring Boot', level: 75, category: 'Backend' },
@@ -64,9 +67,10 @@ const Skills: React.FC = () => {
     
     // Tools & Design
     { name: 'Figma', level: 90, category: 'Design' },
-    { name: 'MySQL', level: 80, category: 'Tools' },
-    { name: 'NoSQL', level: 75, category: 'Tools' },
-    { name: 'Git', level: 85, category: 'Tools' }
+    { name: 'MySQL', level: 80, category: 'Databases' },
+    { name: 'NoSQL', level: 75, category: 'Databases' },
+    { name: 'Git', level: 85, category: 'Tools' },
+    { name: 'Selenium', level: 70, category: 'Tools' }
   ];
 
   const categories = [...new Set(skills.map(skill => skill.category))];

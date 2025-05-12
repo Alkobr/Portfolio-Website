@@ -53,7 +53,7 @@ const About: React.FC = () => {
           <div className="reveal">
             <h3 className="text-2xl font-playfair font-semibold mb-4">Hi, I'm Osama Ghneem</h3>
             <p className="mb-6 text-lg">
-              Dynamic and innovative Full-Stack Developer with a strong foundation in designing and implementing scalable web and mobile applications. Proven leadership in managing cross-functional teams and delivering high-impact solutions for diverse industries.
+              Dynamic and innovative Full-Stack Developer with a strong foundation in designing and implementing scalable web and mobile applications. Proven leadership in managing cross-functional teams and delivering high-impact solutions for diverse industries. Published researcher with a focus on bridging academic learning with real-world applications.
             </p>
             
             <div className="space-y-4 mb-8">

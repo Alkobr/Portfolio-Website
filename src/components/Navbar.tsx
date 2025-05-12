@@ -62,7 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
               {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
             <Button size="sm" variant="secondary" asChild>
-              <a href="#" download="Osama_Ghneem_Resume.pdf">
+              <a href="/Osama_Ghneem_Resume.pdf" download="Osama_Ghneem_Resume.pdf">
                 <Download className="mr-2 h-4 w-4" />
                 Resume
               </a>
@@ -129,7 +129,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
               </a>
             ))}
             <a 
-              href="#" 
+              href="/Osama_Ghneem_Resume.pdf" 
               download="Osama_Ghneem_Resume.pdf" 
               className="px-6 py-3 text-sm font-medium hover:bg-muted transition-colors flex items-center"
             >
