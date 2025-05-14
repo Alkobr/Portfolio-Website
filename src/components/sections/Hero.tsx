@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
                 About me
               </Button>
               <Button size="lg" variant="secondary" asChild>
-                <a href="/OsamaGhneem-FullStackDeveloper-CV.pdf" download="Osama_Ghneem_Resume.pdf">
+                <a href="/Osama Ghneem-Full Stack Developer-CV.pdf" download="Osama_Ghneem_Resume.pdf">
                   <Download className="mr-2 h-4 w-4" />
                   Resume
                 </a>
