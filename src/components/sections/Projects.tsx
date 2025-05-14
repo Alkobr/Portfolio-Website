@@ -14,9 +14,11 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogClose,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface Project {
   id: number;
@@ -240,9 +242,12 @@ const Projects: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {project.tags.slice(0, 3).map((tag) => (
                     <Badge key={tag} variant="secondary">{tag}</Badge>
                   ))}
+                  {project.tags.length > 3 && (
+                    <Badge variant="outline">+{project.tags.length - 3}</Badge>
+                  )}
                 </div>
               </CardContent>
               <CardFooter className="flex justify-between">
@@ -272,94 +277,114 @@ const Projects: React.FC = () => {
         )}
       </div>
 
+      {/* Improved Dialog Component for Mobile Responsiveness */}
       <Dialog open={selectedProject !== null} onOpenChange={closeProjectDetails}>
         {selectedProject && (
-          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle className="text-2xl">{selectedProject.title}</DialogTitle>
-              <DialogDescription className="text-lg text-foreground/80">
-                {selectedProject.category}
-              </DialogDescription>
+          <DialogContent className="sm:max-w-lg md:max-w-2xl lg:max-w-3xl w-[95vw] p-0 h-[90vh] max-h-[90vh] overflow-hidden">
+            <DialogHeader className="p-4 sm:p-6 bg-background sticky top-0 z-10 border-b">
+              <div className="flex items-start justify-between">
+                <div>
+                  <DialogTitle className="text-xl sm:text-2xl">{selectedProject.title}</DialogTitle>
+                  <DialogDescription className="text-sm sm:text-base text-foreground/80">
+                    {selectedProject.category}
+                  </DialogDescription>
+                </div>
+                <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+                  <X className="h-4 w-4" />
+                  <span className="sr-only">Close</span>
+                </DialogClose>
+              </div>
             </DialogHeader>
 
-            <div className="mt-4">
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="w-full h-auto rounded-md object-cover"
-              />
-            </div>
-
-            <div className="mt-6 space-y-6">
-              <div>
-                <h3 className="text-xl font-medium mb-2">Overview</h3>
-                <p className="text-muted-foreground">{selectedProject.longDescription}</p>
-              </div>
-
-              {selectedProject.role && (
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Role</h3>
-                  <p className="text-muted-foreground">{selectedProject.role}</p>
+            <ScrollArea className="h-full max-h-full pb-6">
+              <div className="px-4 sm:px-6">
+                <div className="mt-4">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-auto rounded-md object-cover"
+                  />
                 </div>
-              )}
 
-              {selectedProject.figmaLink && (
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Figma Design</h3>
-                  <p className="text-muted-foreground">{selectedProject.figmaLink}</p>
-                </div>
-              )}
-
-              {selectedProject.technologies && selectedProject.technologies.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Technologies Used</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.technologies.map((tech, index) => (
-                      <Badge key={index} variant="outline">{tech}</Badge>
-                    ))}
+                <div className="mt-6 space-y-6">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-medium mb-2">Overview</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground">{selectedProject.longDescription}</p>
                   </div>
-                </div>
-              )}
 
-              {selectedProject.challenges && selectedProject.challenges.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Challenges</h3>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    {selectedProject.challenges.map((challenge, index) => (
-                      <li key={index}>{challenge}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                  {selectedProject.role && (
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-medium mb-2">Role</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground">{selectedProject.role}</p>
+                    </div>
+                  )}
 
-              {selectedProject.outcomes && selectedProject.outcomes.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Outcomes</h3>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    {selectedProject.outcomes.map((outcome, index) => (
-                      <li key={index}>{outcome}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+                  {selectedProject.figmaLink && (
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-medium mb-2">Figma Design</h3>
+                      <a
+                        href={selectedProject.figmaLink.startsWith('http') ? selectedProject.figmaLink : '#'}
+                        className="text-sm sm:text-base text-primary hover:underline break-words"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {selectedProject.figmaLink}
+                      </a>
+                    </div>
+                  )}
 
-            <div className="mt-6 flex justify-end gap-4">
-              {selectedProject.demoUrl && (
-                <Button asChild>
-                  <a href={selectedProject.demoUrl} target="_blank" rel="noopener noreferrer">
-                    Live Demo <ArrowUpRight className="ml-1 h-4 w-4" />
-                  </a>
-                </Button>
-              )}
-              {selectedProject.repoUrl && (
-                <Button variant="outline" asChild>
-                  <a href={selectedProject.repoUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-1 h-4 w-4" /> Repository
-                  </a>
-                </Button>
-              )}
-            </div>
+                  {selectedProject.technologies && selectedProject.technologies.length > 0 && (
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-medium mb-2">Technologies Used</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.technologies.map((tech, index) => (
+                          <Badge key={index} variant="outline">{tech}</Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedProject.challenges && selectedProject.challenges.length > 0 && (
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-medium mb-2">Challenges</h3>
+                      <ul className="list-disc list-inside space-y-1 text-sm sm:text-base text-muted-foreground">
+                        {selectedProject.challenges.map((challenge, index) => (
+                          <li key={index}>{challenge}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {selectedProject.outcomes && selectedProject.outcomes.length > 0 && (
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-medium mb-2">Outcomes</h3>
+                      <ul className="list-disc list-inside space-y-1 text-sm sm:text-base text-muted-foreground">
+                        {selectedProject.outcomes.map((outcome, index) => (
+                          <li key={index}>{outcome}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-6 flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 pb-6">
+                  {selectedProject.demoUrl && (
+                    <Button className="w-full sm:w-auto" asChild>
+                      <a href={selectedProject.demoUrl} target="_blank" rel="noopener noreferrer">
+                        Live Demo <ArrowUpRight className="ml-1 h-4 w-4" />
+                      </a>
+                    </Button>
+                  )}
+                  {selectedProject.repoUrl && (
+                    <Button variant="outline" className="w-full sm:w-auto" asChild>
+                      <a href={selectedProject.repoUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-1 h-4 w-4" /> Repository
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </ScrollArea>
           </DialogContent>
         )}
       </Dialog>

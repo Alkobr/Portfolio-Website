@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Moon, Sun, Download } from 'lucide-react';
@@ -38,6 +37,18 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
     }
   };
 
+  // Function to handle resume download
+  const handleResumeDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Create a link to the correct file path
+    const link = document.createElement('a');
+    link.href = '/Osama Ghneem-Full Stack Developer-CV.pdf'; // Make sure this path is correct in your public folder
+    link.download = 'Osama_Ghneem_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 md:px-6">
@@ -45,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
           <a href="#home" className="text-xl font-bold" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}>
             <span className="gradient-text font-[Playfair+Display]">Osama Ghneem</span>
           </a>
-          
+
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
@@ -61,14 +72,12 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
             <Button variant="outline" size="icon" onClick={toggleDarkMode} aria-label="Toggle theme">
               {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
-            <Button size="sm" variant="secondary" asChild>
-              <a href="/Osama Ghneem-Full Stack Developer-CV.pdf" download="Osama_Ghneem_Resume.pdf">
-                <Download className="mr-2 h-4 w-4" />
-                Resume
-              </a>
+            <Button size="sm" variant="secondary" onClick={handleResumeDownload}>
+              <Download className="mr-2 h-4 w-4" />
+              Resume
             </Button>
           </nav>
-          
+
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden gap-2">
             <Button
@@ -113,7 +122,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-t">
@@ -128,14 +137,13 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
                 {link.name}
               </a>
             ))}
-            <a 
-              href="/Osama_Ghneem_Resume.pdf" 
-              download="Osama_Ghneem_Resume.pdf" 
-              className="px-6 py-3 text-sm font-medium hover:bg-muted transition-colors flex items-center"
+            <button
+              className="px-6 py-3 text-sm font-medium hover:bg-muted transition-colors flex items-center text-left w-full"
+              onClick={handleResumeDownload}
             >
               <Download className="mr-2 h-4 w-4" />
               Download Resume
-            </a>
+            </button>
           </nav>
         </div>
       )}

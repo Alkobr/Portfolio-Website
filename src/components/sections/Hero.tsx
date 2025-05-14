@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { User, Download, Mail, ExternalLink } from 'lucide-react';
 import userImage from "../../../public/osamaImage2.png"
+
 const Hero: React.FC = () => {
   const scrollToContact = () => {
     const contactSection = document.querySelector('#contact');
@@ -16,6 +16,18 @@ const Hero: React.FC = () => {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  // Function to handle resume download
+  const handleResumeDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Create a link to the correct file path
+    const link = document.createElement('a');
+    link.href = '/Osama Ghneem-Full Stack Developer-CV.pdf'; // Make sure this path is correct in your public folder
+    link.download = 'Osama_Ghneem_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -45,11 +57,9 @@ const Hero: React.FC = () => {
                 <User className="mr-2 h-4 w-4" />
                 About me
               </Button>
-              <Button size="lg" variant="secondary" asChild>
-                <a href="/Osama Ghneem-Full Stack Developer-CV.pdf" download="Osama_Ghneem_Resume.pdf">
-                  <Download className="mr-2 h-4 w-4" />
-                  Resume
-                </a>
+              <Button size="lg" variant="secondary" onClick={handleResumeDownload}>
+                <Download className="mr-2 h-4 w-4" />
+                Resume
               </Button>
             </div>
             <div className="mt-8 flex justify-center md:justify-start gap-6">
