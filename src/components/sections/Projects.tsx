@@ -83,6 +83,7 @@ const Projects: React.FC = () => {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=350",
       tags: ["React", "TypeScript", "TailwindCSS", "Context API", "PDF.js"],
       category: "Frontend",
+      demoUrl: "https://payinvo.netlify.app/Login",
       repoUrl: "https://github.com/Alkobr/Invoice-Generator-App",
       featured: true,
       role: "Frontend Developer",

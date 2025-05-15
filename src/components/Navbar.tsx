@@ -38,12 +38,14 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
   };
 
   // Function to handle resume download
-  const handleResumeDownload = (e: React.MouseEvent) => {
-    e.preventDefault();
-    // Create a link to the correct file path
+  const handleResumeDownload = () => {
+    // Relative path to the CV file - this works better with Netlify
+    const cvUrl = '/Osama Ghneem-Full Stack Developer-CV.pdf';
+    
+    // Create a hidden anchor to trigger the download
     const link = document.createElement('a');
-    link.href = '/Osama Ghneem-Full Stack Developer-CV.pdf'; // Make sure this path is correct in your public folder
-    link.download = 'Osama_Ghneem_Resume.pdf';
+    link.href = cvUrl;
+    link.setAttribute('download', 'Osama_Ghneem_Resume.pdf');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

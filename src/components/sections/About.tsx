@@ -1,9 +1,10 @@
-
 import React from 'react';
-import { User, Briefcase, GraduationCap, Award } from 'lucide-react';
+import { User, Briefcase, GraduationCap, Award, Download } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import userImage from "../../../public/osamaImage2.png"
+import { Button } from '@/components/ui/button';
+import userImage from "../../../public/osamaImage2.png";
+
 const About: React.FC = () => {
   const education = [
     {
@@ -23,6 +24,20 @@ const About: React.FC = () => {
     "React/Next JS Training · Gaza Sky Geeks (Dec 2024 - Apr 2025)"
   ];
 
+  // Function to handle resume download
+  const handleResumeDownload = () => {
+    // Relative path to the CV file - this works better with Netlify
+    const cvUrl = '/resume.pdf';
+
+    // Create a hidden anchor to trigger the download
+    const link = document.createElement('a');
+    link.href = cvUrl;
+    link.setAttribute('download', 'Osama_Ghneem_Resume.pdf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="about" className="section-padding gradient-bg-purple">
       <div className="container mx-auto px-4 md:px-6">
@@ -35,27 +50,27 @@ const About: React.FC = () => {
             Get to know more about my background, skills, and what drives me.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Profile Photo */}
           <div className="flex justify-center md:justify-end reveal">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-accent/20 mix-blend-overlay"></div>
-              <img 
+              <img
                 src={userImage}
-                alt="Osama Ghneem" 
+                alt="Osama Ghneem"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
-          
+
           {/* Bio Details */}
           <div className="reveal">
             <h3 className="text-2xl font-playfair font-semibold mb-4">Hi, I'm Osama Ghneem</h3>
             <p className="mb-6 text-lg">
               Dynamic and innovative Full-Stack Developer with a strong foundation in designing and implementing scalable web and mobile applications. Proven leadership in managing cross-functional teams and delivering high-impact solutions for diverse industries. Published researcher with a focus on bridging academic learning with real-world applications.
             </p>
-            
+
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
                 <Briefcase className="h-5 w-5 text-primary mt-1" />
@@ -66,7 +81,7 @@ const About: React.FC = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <GraduationCap className="h-5 w-5 text-primary mt-1" />
                 <div>
@@ -91,7 +106,7 @@ const About: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <Award className="h-5 w-5 text-primary mt-1" />
                 <div>
@@ -106,6 +121,12 @@ const About: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            {/* CV Download Button */}
+            <Button onClick={handleResumeDownload} className="mt-4" variant="secondary">
+              <Download className="mr-2 h-4 w-4" />
+              Download My Resume
+            </Button>
           </div>
         </div>
       </div>
